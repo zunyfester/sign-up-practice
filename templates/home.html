@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class = 'home-box'>
+  <p style=font-size:40px ;>Hi {{ user.username }}!</p>
+  <p style=font-size:35px ;>This is a test to see if you've logged in correctly</p>
+  <p class = "login-b" ><a href="{% url 'logout' %}">Log Out</a></p>
+  <p class = "login-b"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+</div>
+{% else %}
+<div class = 'home-box'>
+  <p style=font-size:45px ;>You are not logged in</p>
+  <a href="{% url 'login' %}" class = "login-a">Log In</a>
+</div>
+{% endif %}
+{% endblock %}
